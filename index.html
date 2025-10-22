@@ -59,8 +59,14 @@
 		
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
+		
+      var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
-
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
+      var Gameinstance =null;
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
       // If type=='warning', a yellow highlight color is used.
@@ -68,7 +74,6 @@
       // way that non-critical warnings and error messages are presented to the
       // user.
       function unityShowBanner(msg, type) {
-        var warningBanner = document.querySelector("#unity-warning");
         function updateBannerVisibility() {
           warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
         }
@@ -85,6 +90,7 @@
         }
         updateBannerVisibility();
       }
+
 
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/Meme_BUILD_PRODUCT.loader.js";
@@ -124,7 +130,6 @@
 		window.addEventListener("load", maintainAspectRatio);
 
 		document.querySelector("#unity-loading-bar").style.display = "block";
-
       // By default, Unity keeps WebGL canvas render target size matched with
       // the DOM size of the canvas element (scaled by window.devicePixelRatio)
       // Set this to false if you want to decouple this synchronization from
@@ -154,7 +159,9 @@
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
-      }
+
+
+      }       
 
       var script = document.createElement("script");
       script.src = loaderUrl;
