@@ -160,16 +160,16 @@
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                document.querySelector("#unity-loading-bar").style.display = "none";
-				canvas.focus();
-              }).catch((message) => {
-                alert(message);
-              });
-            };
-
-      document.body.appendChild(script);	 
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          Gameinstance =unityInstance;
+		  window.unityInstance=unityInstance;          
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script); 
     </script>
 	<script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
