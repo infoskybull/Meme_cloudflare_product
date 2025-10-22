@@ -50,6 +50,12 @@
       <div id="unity-footer"> </div>
     </div>
     <script>
+	window.tonConnect = new TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: "https://ftpserver.thedungeondiver.com/api/ftp/File/get-file/meme_mainet.json",
+            testnet: false
+        });
+		
+		
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
       var canvas = document.querySelector("#unity-canvas");
